@@ -1,9 +1,10 @@
-import Header from "../componenets/Header"
+import React from 'react'
+import Header from '../components/header'
 
-const Layout =()=>{
-    return <div className="flex flex-col min-h-screen">
-        <Header></Header>
-    </div>
+const Layout = () => {
+  return (
+    <Header/>
+ )
 }
 
-export default Layout;
+export default Layout

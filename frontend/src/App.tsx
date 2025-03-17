@@ -1,16 +1,11 @@
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import Layout from './layouts/Layout'
+import Layout from "./layouts/layout";
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path='/'element={<Layout></Layout>}/>
-        <Route path='/search' element={<>Search Page</>}/>
-        <Route path="*" element={<Navigate to="/" />}/>
-      </Routes>
-    </Router>
-  )
-}
+    <div className={"flex h-screen items-center justify-center bg-gray-100 text-3xl"}>
+      <div><Layout></Layout></div>
+    </div>
+  );
+};
 
-export default App
+export default App;
