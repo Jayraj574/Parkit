@@ -1,10 +1,16 @@
-import Layout from "./layouts/layout";
+import {Route, BrowserRouter as Router, Routes, Navigate} from "react-router-dom";
+import Layout from "./layouts/Layout.tsx";
+import CardHolder from "./components/CardHolder.tsx";
 
 const App = () => {
   return (
-    <div className={"flex h-screen items-center justify-center bg-gray-100 text-3xl"}>
-      <div><Layout></Layout></div>
-    </div>
+    <Router>
+      <Routes>
+          <Route path="/" element={<Layout><CardHolder/></Layout>}/>
+          <Route path="/Search" element={<Layout><p>Search Page</p></Layout>}/>
+          <Route path="*" element={<Navigate to="/"/>}/>
+      </Routes>
+    </Router>
   );
 };
 
