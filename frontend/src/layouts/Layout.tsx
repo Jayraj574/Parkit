@@ -1,5 +1,4 @@
 import Header from '../components/Header'
-import Search from "../components/Search.tsx";
 import Footer from "../components/Footer.tsx";
 
 interface Props {
@@ -10,7 +9,6 @@ const Layout = ({children}:Props) => {
   return (
       <>
           <Header/>
-          <Search/>
           <div>{children}</div>
           <Footer/>
       </>
