@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className='flex justify-between items-center px-12 bg-orange-300 py-10 m-6 rounded-2xl'>
+        <div className='flex justify-between items-center px-12 bg-theme1 py-10 mt-10 '>
             <span className='text-gray-100 text-6xl'>
                 Parkit.com
             </span>

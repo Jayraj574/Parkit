@@ -1,37 +1,38 @@
-type BookProps = {
-    site:string;
-}
 
-const Book = ({site}:BookProps) => {
+const slots = [ 1,2,0,1,0,0,3, ];
+
+const Book = () => {
 
     return (
-        <form className="flex flex-col gap-5 p-10" >
-        <h2 className="text-4xl font-bold ">Book Slot</h2>
-        <h3 className="text-3xl font-semibold ">Site : {site}</h3>
-        <label className="text-gray-700 text-3xl font-semibold">Slot Type :
-                <select id="slottype" className="border rounded w-full py-1 px-2 font-normal mt-2"> Choose Slot Type
-                    <option value="ev slots">EV Slot</option>
-                    <option value="normal slots">Normal Slot</option>
-                </select>
-            </label>
-        <div className="flex flex-col md:flex-row gap-5">
-            <label className="text-gray-700 text-3xl font-semibold">Entry Time :
-                <input className="border rounded w-full py-1 px-2 font-normal mt-2" placeholder="In HH:MM format"></input>
-            </label>
-            <label className="text-gray-700 text-3xl font-semibold">Exit Time : 
-                <input className="border rounded w-full py-1 px-2 font-normal mt-2" placeholder="In HH:MM format"></input>
-            </label>
+        <div className="grid grid-cols-2 grid-rows-3 gap-5 justify-items-center 
+        divide-x-4 divide-theme2 divide-y-4  max-w-auto p-10 m-10">
+                {slots.map((i)=>{
+                    if(i===1)
+                        {return(
+                            <div className=" relative justify-items-center bg-theme1 text-white hover:cursor-not-allowed
+                            rounded-2xl border-7 border-theme1 border-dashed 
+                            outline-7 outline-theme1 outline-offset-7 w-xs h-xl p-7 m-10">
+                                <p className="text-7xl">Reserved</p>
+                            </div>)
+                        }
+                    else if ( i===2)
+                        {return(
+                            <div className=" relative justify-items-center bg-theme1 text-white hover:cursor-not-allowed
+                            rounded-2xl border-7 border-theme1 border-dashed 
+                            outline-7 outline-theme1 outline-offset-7 w-xs h-xl p-7 m-10">
+                                <p className="text-7xl">Occupied</p>
+                            </div>)
+                        }
+                    else{return(
+                        <div className=" relative justify-items-center bg-white hover:rounded-sm hover:bg-hover1 hover:cursor-pointer
+                        rounded-2xl border-7 border-theme1 border-dashed 
+                        outline-7 outline-theme1 outline-offset-7 w-xs h-xl p-7 m-10">
+                            <p className="text-7xl">free</p>
+                        </div>)
+                    }
+                    
+                })}
         </div>
-
-        <div className="text-3xl font-medium : ">Price : </div>
-        
-        <span>
-            <button type="submit" className="text-3xl bg-orange-300 text-white rounded-2xl p-4" > Book </button>
-        </span>
-
-        
-        
-    </form>
     )
 }
 

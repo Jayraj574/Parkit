@@ -5,6 +5,7 @@ import Register from "./pages/Register.tsx";
 import Book from "./pages/Book.tsx";
 import Search from "./components/Search.tsx";
 import Signin from "./pages/Signin.tsx";
+import AdminDashboard from "./pages/Dashboard.tsx";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<Layout><Search/><CardHolder/></Layout>}/>
           <Route path="/Select" element={<Layout><Book site="MBIT"/></Layout>}/>
           <Route path="/signin" element={<Layout><Signin/></Layout>}/>
+          <Route path="/dashboard" element={<Layout><AdminDashboard/></Layout>}/>
           <Route path="/register" element={<Layout><Register/></Layout>}/>
           <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>

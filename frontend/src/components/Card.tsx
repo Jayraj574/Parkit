@@ -11,7 +11,7 @@ type CardProps ={
 
 const Card = ({site, slots ,price,evslots, evprice}:CardProps) =>{
         return(
-        <div className=" border-4 border-orange-300 rounded-2xl w-2xl mx-auto my-6 pb-6">
+        <div className="bg-white rounded-2xl w-2xl mx-auto my-6 pb-6 hover:drop-shadow-2xl hover:shadow-theme2">
             <img src={ADIT} className=" w-full h-50 rounded-t-xl" />
             <p className=" text-2xl font-bold mt-4 ml-4">
                     {site}
@@ -28,7 +28,7 @@ const Card = ({site, slots ,price,evslots, evprice}:CardProps) =>{
                     <p>Rate : ${evprice} / hr </p>
                 </span>
             </div>
-            <Link to='/Select' className="text-xl bg-orange-300 text-white rounded-2xl py-2 px-3 ml-3" >
+            <Link to='/Select' className="text-xl  bg-theme3 text-gray-950 rounded-md py-2 px-3 ml-3" >
                     Book
                 </Link>
         </div>
