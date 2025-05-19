@@ -1,16 +1,17 @@
 const Footer = () => {
-    return (
-        <div className='flex justify-between items-center px-12 bg-theme1 py-10 mt-10 '>
-            <span className='text-gray-100 text-6xl'>
-                Parkit.com
-            </span>
-            <span className='text-gray-100 text-3xl' >
-                <p>About Us</p>
-                <p>Contact Us</p>
-                <p>Careers</p>
-            </span>
-        </div>
-    )
-}
+  return (
+    <div className="bg-blue-800 py-10">
+      <div className="container mx-auto flex justify-between items-center">
+        <span className="text-3xl text-white font-bold tracking-tight">
+          MernHolidays.com
+        </span>
+        <span className="text-white font-bold tracking-tight flex gap-4">
+          <p className="cursor-pointer">Privacy Policy</p>
+          <p className="cursor-pointer">Terms of Service</p>
+        </span>
+      </div>
+    </div>
+  );
+};
 
 export default Footer;

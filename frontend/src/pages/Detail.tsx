@@ -1,38 +1,66 @@
-type DetailProps = {
-    site:string;
-}
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+import * as apiClient from "./../api-client";
+import { AiFillStar } from "react-icons/ai";
+import GuestInfoForm from "../forms/GuestInfoForm/GuestInfoForm";
 
-const Detail = ({site}:DetailProps) => {
+const Detail = () => {
+  const { parkingId } = useParams();
 
-    return (
-        <form className="flex flex-col gap-5 p-10" >
-        <h2 className="text-4xl font-bold ">Book Slot</h2>
-        <h3 className="text-3xl font-semibold ">Site : {site}</h3>
-        <label className="text-gray-700 text-3xl font-semibold">Slot Type :
-                <select id="slottype" className="border rounded w-full py-1 px-2 font-normal mt-2"> Choose Slot Type
-                    <option value="ev slots">EV Slot</option>
-                    <option value="normal slots">Normal Slot</option>
-                </select>
-            </label>
-        <div className="flex flex-col md:flex-row gap-5">
-            <label className="text-gray-700 text-3xl font-semibold">Entry Time :
-                <input className="border rounded w-full py-1 px-2 font-normal mt-2" placeholder="In HH:MM format"></input>
-            </label>
-            <label className="text-gray-700 text-3xl font-semibold">Exit Time : 
-                <input className="border rounded w-full py-1 px-2 font-normal mt-2" placeholder="In HH:MM format"></input>
-            </label>
-        </div>
+  const { data: parking } = useQuery(
+    "fetchParkingById",
+    () => apiClient.fetchParkingById(parkingId || ""),
+    {
+      enabled: !!parkingId,
+    }
+  );
 
-        <div className="text-3xl font-medium : ">Price : </div>
-        
-        <span>
-            <button type="submit" className="text-3xl bg-orange-300 text-white rounded-2xl p-4" > Book </button>
+  if (!parking) {
+    return <></>;
+  }
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <span className="flex">
+          {Array.from({ length: parking.starRating }).map(() => (
+            <AiFillStar className="fill-yellow-400" />
+          ))}
         </span>
+        <h1 className="text-3xl font-bold">{parking.name}</h1>
+      </div>
 
-        
-        
-    </form>
-    )
-}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {parking.imageUrls.map((image) => (
+          <div className="h-[300px]">
+            <img
+              src={image}
+              alt={parking.name}
+              className="rounded-md w-full h-full object-cover object-center"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
+        {parking.facilities.map((facility) => (
+          <div className="border border-slate-300 rounded-sm p-3">
+            {facility}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
+        <div className="whitespace-pre-line">{parking.description}</div>
+        <div className="h-fit">
+          <GuestInfoForm
+            pricePerHour={parking.pricePerHour}
+            hotelId={parking._id}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Detail;
